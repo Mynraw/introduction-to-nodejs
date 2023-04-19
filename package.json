@@ -1,0 +1,13 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "description": "nodejs-101",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "mynraw",
+  "license": "ISC"
+}
