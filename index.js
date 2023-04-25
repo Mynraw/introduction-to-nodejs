@@ -2,6 +2,7 @@ import { readFileSync } from 'fs';
 import { createServer } from 'http';
 import { parse, fileURLToPath } from 'url';
 import path from 'path';
+import replaceTemplate from './modules/replaceTemplate.js';
 
 // This is how to use dirname if module is enabled and it became ES instead of commonJS (screw 'rEqUiReD')
 const __filename = fileURLToPath(import.meta.url);
@@ -44,22 +45,6 @@ const __dirname = path.dirname(__filename);
 
 ////////////////////////////////////////////////////////////////////////
 // SERVER
-const replaceTemplate = (temp, product) => {
-  // Instead of mutating parameters, create a variable, assign the values and make mutations there.
-  let output = temp.replace(/{%PRODUCT_NAME%}/g, product.productName);
-  output = output.replace(/{%IMAGE%}/g, product.image);
-  output = output.replace(/{%FROM%}/g, product.from);
-  output = output.replace(/{%NUTRIENTS%}/g, product.nutrients);
-  output = output.replace(/{%QUANTITY%}/g, product.quantity);
-  output = output.replace(/{%PRICE%}/g, product.price);
-  output = output.replace(/{%DESCRIPTION%}/g, product.description);
-  output = output.replace(/{%ID%}/g, product.id);
-
-  if (!product.organic)
-    output = output.replace(/{%NOT_ORGANIC%}/g, 'not-organic');
-
-  return output;
-};
 
 // Read and write API and other pages once at the beginning
 // !!! MAKE IT SYNC (BLOCKED) THIS TIME. runs just once.
