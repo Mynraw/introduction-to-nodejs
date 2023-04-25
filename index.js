@@ -2,6 +2,7 @@ import { readFileSync } from 'fs';
 import { createServer } from 'http';
 import { parse, fileURLToPath } from 'url';
 import path from 'path';
+import slugify from 'slugify';
 import replaceTemplate from './modules/replaceTemplate.js';
 
 // This is how to use dirname if module is enabled and it became ES instead of commonJS (screw 'rEqUiReD')
@@ -86,7 +87,6 @@ const server = createServer((req, res) => {
       .join('');
 
     const output = tempOverview.replace('{%PRODUCT_CARDS%}', cardsHtml);
-
     res.end(output);
 
     // Product page
